@@ -1,0 +1,86 @@
+@import 'tailwindcss';
+
+/* ---------- Brand theme ---------- */
+@theme {
+  --color-blush: #f8dde7;
+  --color-baby: #f5c6d6;
+  --color-petal: #fcebf1; /* soft pastel pink */
+  --color-cream: #fff9f5;
+  --color-burgundy: #762f46;
+  --color-burgundy-dark: #5c2337;
+  --color-soft-rose: #e9a9be;
+  --color-ink: #3e2a31; /* main text */
+  --color-muted: #7a6268; /* secondary text */
+
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Jost', ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 12px 32px -16px rgb(118 47 70 / 0.22);
+  --shadow-lift: 0 24px 48px -20px rgb(118 47 70 / 0.32);
+
+  --animate-fade-in: fade-in 0.45s ease both;
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+    font-weight: 400;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif;
+    letter-spacing: -0.01em;
+  }
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-burgundy);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+  ::selection {
+    background: var(--color-baby);
+    color: var(--color-burgundy-dark);
+  }
+}
+
+/* ---------- Reusable components ---------- */
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .eyebrow {
+    @apply text-xs font-medium tracking-[0.28em] text-burgundy/70 uppercase;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-burgundy px-7 py-3.5 text-sm font-medium tracking-wide text-cream shadow-soft transition duration-300 hover:-translate-y-0.5 hover:bg-burgundy-dark hover:shadow-lift active:translate-y-0;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-burgundy/30 bg-white/60 px-6 py-3 text-sm font-medium text-burgundy transition duration-300 hover:border-burgundy hover:bg-white;
+  }
+}
+
+/* ---------- Accessibility: reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

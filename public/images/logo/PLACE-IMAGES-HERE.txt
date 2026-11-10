@@ -1,0 +1,4 @@
+﻿OFFICIAL LOGO
+
+Put your logo here named exactly:  logo.png
+(transparent background recommended). It is also used as the browser tab icon.

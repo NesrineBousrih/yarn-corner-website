@@ -1,0 +1,5 @@
+﻿OPTIONAL HOMEPAGE PHOTO
+
+The homepage currently shows the burgundy bag photo.
+To use a different photo: put it here as hero.jpg, then in src/config/site.ts set:
+  heroImage: '/images/hero/hero.jpg'
